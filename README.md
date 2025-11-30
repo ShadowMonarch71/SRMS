@@ -4,12 +4,12 @@ A simple Python-based record management system for managing student records.
 
 ## Features
 
-- ✅ Add new student records
-- ✅ View all records
-- ✅ Search records by student ID
-- ✅ Update existing records
-- ✅ Delete records
-- ✅ Data persistence using JSON
+-  Add new student records
+-  View all records
+-  Search records by student ID
+-  Update existing records
+-  Delete records
+-  Data persistence using JSON
 
 ## How to Run
 

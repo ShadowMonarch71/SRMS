@@ -37,9 +37,9 @@ Records are stored in `records.json` file in the same directory. The file is cre
 ## Example
 
 ```
-Student ID: S001
-Name: John Doe
-Course: Computer Science
+Student ID: 123
+Name: Hit
+Course: cse
 Grade: A
 ```
 

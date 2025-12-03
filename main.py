@@ -1,3 +1,4 @@
+''''
 import json
 import os
 from datetime import datetime
@@ -30,12 +31,17 @@ class RecordManager:
         self.save_records()
         print(f" Record added successfully for {name}")
 
-    def view_all(self):
-        print(f"{'ID':<10} {'Name':<20} {'Course':<15} {'Grade':<10} {'Created':<20}")
+    def view_all_records(self):
+        if not self.records:
+            print("\nNo records found.")
+            return
+        
+        print(f"\n{'ID':<10} {'Name':<20} {'Course':<15} {'Grade':<10} {'Created':<20}")
+        print("-" * 75)
         for record in self.records:
             print(
                 f"{record['id']:<10} {record['name']:<20} {record['course']:<15} "
-                f"{record['grade']:<10} {record['created_at']:<20}\n"
+                f"{record['grade']:<10} {record['created_at']:<20}"
             )
 
     def search_record(self, student_id):
@@ -83,7 +89,7 @@ class RecordManager:
 
 
 def display_menu():
-    print("  STUDENT RECORD MANAGEMENT SYSTEM")
+    print("\n  STUDENT RECORD MANAGEMENT SYSTEM")
     print("1. Add New Record")
     print("2. View All Records")
     print("3. Search Record")
@@ -92,13 +98,12 @@ def display_menu():
     print("6. Delete All Records")
     print("7. Exit")
 
-
 def main():
     manager = RecordManager()
 
     while True:
         display_menu()
-        choice = input("\nEnter your choice (1-6): ").strip()
+        choice = input("\nEnter your choice (1-7): ").strip()
 
         if choice == "1":
             print("\n   Add New Record    ")
@@ -134,9 +139,7 @@ def main():
             print("\n    Delete Record    ")
             student_id = input("Enter Student ID to delete: ").strip()
             confirm = (
-                input(f"Are you sure you want to delete record '{student_id}'? (y/n): ")
-                .strip()
-                .lower()
+                input(f"Are you sure you want to delete record '{student_id}'? (y/n): ").strip().lower()
             )
             if confirm == "y":
                 manager.delete_record(student_id)
@@ -160,8 +163,9 @@ def main():
             break
 
         else:
-            print("\n Invalid choice. Please select 1-6.")
+            print("\n Invalid choice. Please select 1-7.")
 
 
 if __name__ == "__main__":
     main()
+'''

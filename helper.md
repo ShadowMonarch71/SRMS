@@ -1,0 +1,1 @@
+USER_FILE="users.json" // stores the user info

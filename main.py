@@ -126,21 +126,24 @@ def guest_login() -> Dict:
 
 def login() -> Dict | None:
     users = read_json_file(USER_FILE)
+    attempts = 3
+    
+    while attempts > 0:
+        username = input("Enter username: ").strip()
+        password = input("Enter password: ").strip()
 
-    username = input("Enter username: ").strip()
-    password = input("Enter password: ").strip()
+        user = find_user(username, users)
+        if user and verify_pass(password, user.get("password", "")):
+            print(f"Login successful. Welcome {username}!")
+            return user
 
-    user = find_user(username, users)
-    if user is None:
-        print("Invalid username or password.")
-        return None
+        attempts -= 1
+        print(f"Invalid username or password. Attempts left: {attempts}")
 
-    if not verify_pass(password, user.get("password", "")):
-        print("Invalid username or password.")
-        return None
+    print("Too many unsuccessful attempts. Locked for 2 minutes.")
+    time.sleep(120)
+    return None
 
-    print(f"Login successful. Welcome {username}!")
-    return user
 
 
 
